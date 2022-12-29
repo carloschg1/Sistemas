@@ -15,7 +15,8 @@ while read linea; do
   nombre_apellido=$(echo $linea | cut -d ',' -f3)
   descripcion=$(echo $linea | cut -d ',' -f4)
   departamentos=$(echo $linea | cut -d ',' -f5)
-  sudo useradd -m -l "$login" -p $(openssl passwd -1 "$password") -c "$nombre_apellido" -g "$departamentos"
+  grupoc=$(echo $linea | cut -d ',' -f6)
+  sudo useradd -m -l "$login" -p $(openssl passwd -1 "$password") -c "$nombre" -g "$departamentos" -g "$grupoc"
   sudo chage -d 0 "$login"
 
 done <<< "$usuarios"
