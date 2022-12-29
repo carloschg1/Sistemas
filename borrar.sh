@@ -8,4 +8,6 @@ while read line; do
   grupoc=$(echo $line | cut -d ',' -f6)
   sudo userdel -r "$login"
   sudo groupdel "$departamentos"
+  sudo groupdel "$grupoc" 
+
 done <<< "$empleados"
